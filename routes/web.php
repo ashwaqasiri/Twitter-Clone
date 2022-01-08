@@ -16,8 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[\App\Http\Controllers\HomeController::class,'index'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', [\App\Http\Controllers\TweetsController::class,'index'])->name('home');
     Route::post('/tweets', [\App\Http\Controllers\TweetsController::class,'store']);
