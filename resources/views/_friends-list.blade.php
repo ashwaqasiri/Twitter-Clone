@@ -3,12 +3,12 @@
 
     <ul>
         {{-- @forelse (current_user()->follows as $user) --}}
-            <li class="">
-                <div>
-                    <a href="" class="flex items-center text-sm">
+            <li class="mb-4">
+                <div class="">
+                <a href="{{route('profile',$user->name)}}" class="flex items-center text-sm">
                         <img
-                            src=""
-                            alt=""
+                            src="{{$user->avatar}}"
+                            alt="{{$user->name}}"
                             class="rounded-full mr-2"
                             width="40"
                             height="40"
