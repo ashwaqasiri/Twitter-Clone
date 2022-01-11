@@ -2,7 +2,7 @@
     <h3 class="font-bold text-xl mb-4">Following</h3>
 
     <ul>
-        {{-- @forelse (current_user()->follows as $user) --}}
+        @forelse (auth()->user()->follows as $user)
             <li class="mb-4">
                 <div class="">
                 <a href="{{route('profile',$user->name)}}" class="flex items-center text-sm">
@@ -14,12 +14,12 @@
                             height="40"
                         >
 
-                        {{-- {{ $user->name }} --}}
+                        {{ $user->name }}
                     </a>
                 </div>
             </li>
-        {{-- @empty --}}
+        @empty
             <li>No friends yet!</li>
-        {{-- @endforelse --}}
+        @endforelse
     </ul>
 </div>

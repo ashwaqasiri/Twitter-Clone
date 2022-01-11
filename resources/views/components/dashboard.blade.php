@@ -12,7 +12,7 @@
 
                 @auth
                     <div class="lg:w-1/6">
-                        {{-- @include ('_friends-list') --}}
+                        @include ('_friends-list')
                     </div>
                 @endauth
             </div>
