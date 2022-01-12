@@ -27,7 +27,13 @@
                         >
                             Edit Profile
                         </a>
-    
+
+                    <form action="/profile/{{$user->name}}/follow" method="POST">
+                        @csrf
+                        <button type="submit" class="bg-cyan-300 rounded-full shadow py-2 px-4 text-black text-xs">
+                         {{auth()->user()->following($user)? 'Unfollow Me' : 'Follow Me'}}
+                        </button>
+                    </form>
                     {{-- <x-follow-button :user="$user"></x-follow-button> --}}
                 </div>
             </div>
