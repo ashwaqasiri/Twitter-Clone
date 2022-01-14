@@ -21,6 +21,6 @@ class TweetsController extends Controller
             'body' => $attributes['body']
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/tweets');
     }
 }
