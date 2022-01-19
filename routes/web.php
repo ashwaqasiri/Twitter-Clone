@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExploreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/{user:name}/follow', [\App\Http\Controllers\FollowsController::class,'store']);
     Route::get('/profile/edit/{user:name}', [\App\Http\Controllers\ProfileController::class,'edit'])->name('profile.edit');
     Route::patch('/profile/update/{user:name}', [\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
+    Route::get('/explore',ExploreController::class)->name('explore');
 });
 
 Route::get('/profile/{user:name}',[\App\Http\Controllers\ProfileController::class,'show'])->name('profile');
