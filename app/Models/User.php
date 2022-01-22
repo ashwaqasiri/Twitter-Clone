@@ -68,7 +68,22 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) 
     { 
         $this->attributes['password'] = bcrypt($value);
-     }
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Tweet::class,'tweet_user','user_id','tweet_id');
+    }
+
+    public function toggleLike(Tweet $tweet)
+    {
+        $this->likes()->toggle($tweet);
+    }
+
+    public function isLiked(Tweet $tweet)
+    {
+        return $this->likes()->where('tweet_id', $tweet->id)->exists();
+    }
 
     // public function getRouteKeyName()
     // {

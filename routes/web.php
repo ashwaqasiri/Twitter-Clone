@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit/{user:name}', [\App\Http\Controllers\ProfileController::class,'edit'])->name('profile.edit');
     Route::patch('/profile/update/{user:name}', [\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
     Route::get('/explore',ExploreController::class)->name('explore');
+    Route::post('/tweets/{tweet}/like', [\App\Http\Controllers\LikeController::class,'store'])->name('tweets.like');
+
 });
 
 Route::get('/profile/{user:name}',[\App\Http\Controllers\ProfileController::class,'show'])->name('profile');

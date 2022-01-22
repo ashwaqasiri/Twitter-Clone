@@ -22,8 +22,8 @@
           {{$tweet->body}}
         </p>
 
-        {{-- @auth
+        @auth
             <x-like-buttons :tweet="$tweet" />
-        @endauth --}}
+        @endauth
     </div>
 </div>
