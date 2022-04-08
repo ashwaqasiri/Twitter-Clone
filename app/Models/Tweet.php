@@ -23,4 +23,11 @@ class Tweet extends Model
     {
         return $this->belongsToMany(User::class,'tweet_user','tweet_id','user_id');
     }
+
+    public function retweets()
+    {
+        return $this->belongsToMany(User::class,'retweet','tweet_id','user_id')
+        ->withTimestamps()
+        ->orderByPivot('created_at', 'desc');
+    }
 }

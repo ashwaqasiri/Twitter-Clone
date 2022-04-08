@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Traits\Followable;
+//use App\Traits\Retweetable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Followable ;
@@ -57,7 +58,7 @@ class User extends Authenticatable
 
         return Tweet::whereIn('user_id',$ids)
                     ->orWhere('user_id',$this->id)
-                    ->latest()->paginate(5);
+                    ->latest()->paginate(10);
     }
 
     public function tweets()
@@ -70,6 +71,7 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    // Like Section
     public function likes()
     {
         return $this->belongsToMany(Tweet::class,'tweet_user','user_id','tweet_id');
@@ -83,6 +85,25 @@ class User extends Authenticatable
     public function isLiked(Tweet $tweet)
     {
         return $this->likes()->where('tweet_id', $tweet->id)->exists();
+    }
+
+    // retweets section
+
+    public function toggleRetweet(Tweet $tweet)
+    {
+        $this->retweets()->toggle($tweet);
+    }
+
+    public function retweets()
+    {
+        return $this->belongsToMany(Tweet::class,'retweet','user_id','tweet_id')
+        ->withTimestamps()
+        ->orderByPivot('created_at', 'desc');
+    }
+
+    public function isRetweeted(Tweet $tweet)
+    {
+        return $this->retweets()->where('tweet_id', $tweet->id)->exists();
     }
 
     // public function getRouteKeyName()

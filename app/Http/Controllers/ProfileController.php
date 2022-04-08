@@ -10,11 +10,16 @@ class ProfileController extends Controller
 {
     public function show(User $user)
     {
+        $tweets = $user->tweets()->orderByDesc('created_at')->get();
+        $retweets = $user->retweets()->get();
+        $likes = $user->likes()->get();
+        // $tweetsMerged = $retweets->merge($userTweets->sortByDesc('created_at'));
+        // $tweets = $tweetsMerged;
         return view('profile.show', [
             'user' => $user,
-            'tweets' => $user
-                ->tweets()
-                ->paginate(10),
+            'tweets' => $tweets,
+            'retweets' => $retweets,
+            'likes' => $likes
         ]);
     }
 
@@ -45,7 +50,6 @@ class ProfileController extends Controller
         ]);
 
         if (request('avatar')) {
-            //$attributes['avatar'] = request('avatar')->store('avatars');
             $attributes['avatar'] = time() . '.' . request('avatar')->getClientOriginalExtension();    
             request('avatar')->move(storage_path('app/public/avatars'), $attributes['avatar']);
         }

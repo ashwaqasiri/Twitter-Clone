@@ -9,8 +9,8 @@ class TweetsController extends Controller
 {
     public function index()
     {
-        $tweets = auth()->user()->timeline();
-        return view('tweet.index',compact('tweets'));
+        return view('tweet.index');
+
     }
 
     public function store()
@@ -22,5 +22,11 @@ class TweetsController extends Controller
         ]);
 
         return redirect('/tweets');
+    }
+
+    public function retweet(Tweet $tweet)
+    {
+        auth()->user()->toggleRetweet($tweet);
+        return redirect()->back();
     }
 }

@@ -1,8 +1,9 @@
-<div class="border border-blue-400 rounded-lg px-8 py-6 mb-8">
-    <form method="POST" action="/tweets">
-        @csrf
+{{-- <div class="border border-blue-400 rounded-lg px-8 py-6 mb-8"> --}}
+    {{-- <form wire:submit.prevent="submit"> --}}
+        {{-- @csrf --}}
 
-        <textarea
+        {{-- <textarea
+            wire:model="body"
             name="body"
             class="w-full"
             placeholder="What's up doc?"
@@ -21,15 +22,17 @@
             >
 
             <button
-                type="submit"
+                wire:click.prevent="addTweet"
                 class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white h-10"
             >
                 Publish
             </button>
-        </footer>
-    </form>
+        </footer> --}}
+    {{-- </form> --}}
 
-    @error('body')
+    {{-- @error('body')
         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
     @enderror
-</div>
+</div> --}}
+
+

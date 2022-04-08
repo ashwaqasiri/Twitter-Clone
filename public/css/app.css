@@ -1440,3 +1440,11 @@ select {
   }
 }
 
+/* custom css */
+@media (max-width: 768px) { 
+  .friends-card{
+    margin-top: 15px;
+    margin-bottom: 4px;
+  }
+}
+

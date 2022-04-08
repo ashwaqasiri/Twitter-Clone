@@ -13,6 +13,7 @@
 
     <div>
         <h5 class="font-bold mb-2">
+            <p class="text-xs font-thin text-gray-500">{{(auth()->user()->isRetweeted($tweet))?'You Retweeted': ''}}</p>
             <a href="{{route('profile',$tweet->user->name)}}">
                 {{$tweet->user->name}}
             </a>
@@ -21,9 +22,13 @@
         <p class="text-sm mb-3">
           {{$tweet->body}}
         </p>
-
-        @auth
+        @livewire('like-retweet',['tweet' => $tweet])
+        {{-- @auth
             <x-like-buttons :tweet="$tweet" />
         @endauth
+        @auth
+            <x-retweet-buttons :tweet="$tweet" />
+        @endauth --}}
     </div>
 </div>
+

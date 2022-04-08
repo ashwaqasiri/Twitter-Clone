@@ -8,7 +8,7 @@
     
                 <img src="{{ $user->avatar }}"
                      alt="profile avatar"
-                     class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
+                     class="inline object-cover w-16 h-16 mr-2 rounded-full absolute transform -translate-x-1/2 translate-y-1/2"
                      style="left: calc(50% - 75px);
                             top: 50%; "
                      width="150"
@@ -42,7 +42,7 @@
     
     
         </header>
-
-        @include ('_timeline', ['tweets' => $tweets])
-
+        <x-profile-tabs :tweets="$tweets" :retweets="$retweets" :likes="$likes"></x-profile-tabs>
+        {{-- {{ $tweets->links() }} --}}
+        {{-- @include ('_timeline', ['tweets' => $tweets]) --}}
 </x-dashboard>

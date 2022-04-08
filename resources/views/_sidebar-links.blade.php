@@ -1,38 +1,38 @@
-<ul>
-    <li>
+<div class="flex justify-between">
+    <div class=''>
         <a
             class="font-bold text-lg mb-4 block"
             href="{{route('home')}}"
         >
             Home
         </a>
-    </li>
+    </div>
 
-    <li>
+    <div class=''>
         <a
             class="font-bold text-lg mb-4 block"
             href="/explore"
         >
             Explore
         </a>
-    </li>
+    </div>
 
     @auth
-        <li>
+        <div class=''>
             <a
                 class="font-bold text-lg mb-4 block"
                 href="{{route('profile', auth()->user())}}"
             >
                 Profile
             </a>
-        </li>
+        </div>
 
-        <li>
+        <div class=''>
             <form method="POST" action="/logout">
                 @csrf
 
                 <button class="font-bold text-lg">Logout</button>
             </form>
-        </li>
+        </div>
     @endauth
-</ul>
+</div>

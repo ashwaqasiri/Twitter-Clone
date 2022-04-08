@@ -1,7 +1,8 @@
 <x-dashboard>
     <div>
-        @include ('_publish-tweet-panel')
+        {{-- @include ('_publish-tweet-panel') --}}
+        @livewire('publish-tweet')
         
-        @include ('_timeline')
+        @livewire('timeline')
     </div>
 </x-dashboard>
